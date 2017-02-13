@@ -1,0 +1,24 @@
+<h1> This is Moderator Pages </h1>
+<table>
+  <thead>
+
+  <tr>
+    <th>Full Name</th>
+    <th>User Name</th>
+    <th>Create at</th>
+    <th>Action</th>
+
+  </tr>
+
+</thead>
+<tbody>
+  <% @moderators.each do |moderator| %>
+  <tr>
+    <td><%= moderator.fullname %></td>
+    <td><%= moderator.username %></td>
+    <td><%= time_ago_in_words(moderator.created_at) %> ago</td>
+    <td><%= link_to "Edit", edit_admin_moderator_path(moderator) %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>

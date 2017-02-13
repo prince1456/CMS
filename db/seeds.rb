@@ -9,3 +9,5 @@ moderator = Moderator.create(
   fullname: "Ali",
   username: "ali@gmail.com",
   password: "example" )
+
+  
