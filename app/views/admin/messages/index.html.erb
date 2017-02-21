@@ -1,0 +1,21 @@
+<h1>Admin::Messages#index</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>From</th>
+    <th>Email</th>
+    <th>Content</th>
+    <th>Action</th>
+  </tr>
+  <% @messages.each do |message| %>
+  <tr>
+    <td><%= message.visitor.fullname %></td>
+    <td><%= message.visitor.email %></td>
+    <td><%= message.content %></td>
+    <td><%= link_to "Show", admin_message_path(message) %>
+        <%= link_to "Edit", edit_admin_message_path(message) %>
+        <%= link_to "Delete", admin_message_path(message), method: :delete, data: { confirm: "Are you sure?"} %></td>
+  </tr>
+  <% end %>
+
+</table>

@@ -1,0 +1,9 @@
+<h1>
+    New tag Form
+</h1>
+<div class="container">
+    <%= form_for [:admin, @tag] do |f| %>
+    <%= f.text_area :name, placeholder: 'e.g Ruby, Payton, Php' %>
+    <%= f.submit %>
+    <% end %>
+</div>

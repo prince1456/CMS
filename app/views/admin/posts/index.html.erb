@@ -1,2 +1,41 @@
 <h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+
+ <%= render_breadcrumbs %>
+<div class="container">
+  <%= form_tag(admin_posts_path, method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search' %>
+  <% end %>
+        <p>
+            <%= link_to "New Post", new_admin_post_path %>
+        </p>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>User</th>
+            <th>Status</th>
+            <th>Comments # </th>
+            <th>Tags</th>
+            <th>Action</th>
+        </tr>
+        <% @posts.each do |f| %>
+        <tr>
+            <td><%= truncate(f.title, length:40, sperate:'') %></td>
+            <td><%= f.content  %></td>
+            <td><%= f.moderator.fullname %></td>
+            <td><%= status_convertor(f.publish) %></td>
+            <td><%= f.comments.count %></td>
+            <td><% f.tags.each do |tag| %>
+                  <%= tag.name %>
+                  <% end %>
+            </td>
+            <td><%= link_to "Edit", edit_admin_post_path(f) %> |
+            <%= link_to "Show", admin_post_path(f) %> |
+            <%= link_to "Delete", admin_post_path(f), method: :delete, data:{confirm: "Are you sure you want delete the post"} %></td>
+        </tr>
+        <% end %>
+    </table>
+    <p> <%= paginate @posts %> </p>
+</div>
