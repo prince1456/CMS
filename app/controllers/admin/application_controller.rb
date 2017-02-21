@@ -10,6 +10,10 @@ class Admin::ApplicationController < ActionController::Base
     unless current_moderator
     redirect_to '/login', alert: "Please login to your admin pages"
   end
-end
+  end
+
+  def to_bool string
+    ActiveRecord::Type::Boolean.new.cast(string)
+  end
 
 end

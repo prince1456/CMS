@@ -3,7 +3,12 @@ class Admin::MessagesController < Admin::ApplicationController
   before_action :find_params, only: [:destroy, :show, :update, :edit]
 
   def index
-    @messages = Message.all
+    if params[:search].present?
+      @messages = Message.search_message(params[:search]).page params[:page]
+    else
+      @messages = Message.all.order(created_at: :DESC).page params[:page]
+    end
+
   end
 
   def destroy
@@ -12,6 +17,7 @@ class Admin::MessagesController < Admin::ApplicationController
   end
 
   def show
+    @message.mark_read
   end
 
   def edit
@@ -28,18 +34,14 @@ class Admin::MessagesController < Admin::ApplicationController
   end
 
   def update
-    if @message.save
-      redirect_to @message, notice: "your message is succcessfully updated"
-    else
-      flash[:alert] = "OPS somethings wrong"
-      render :edit
-    end
+      @message.update(status: params[:status])
+      redirect_to :back, notice: "your message is succcessfully updated"
   end
 
   private
 
   def strong_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :status)
   end
 
   def find_params

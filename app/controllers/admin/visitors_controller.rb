@@ -1,4 +1,4 @@
-class Admin::VisitorsController < ApplicationController
+class Admin::VisitorsController < Admin::ApplicationController
   def create
     @visitor = Visitor.new(strong_params)
     if @visitor.save
@@ -23,7 +23,7 @@ class Admin::VisitorsController < ApplicationController
     @visitor =Visitor.find(params[:id])
   end
   def index
-    @visitors = Visitor.all
+    @visitors = Visitor.all.order(created_at: :desc)
   end
 
   def new

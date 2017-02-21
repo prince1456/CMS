@@ -3,14 +3,15 @@
 <tr>
   <th>Full Name</th>
   <th>Email</th>
+  <th>Created at</th>
   <th>Action</th>
 </tr>
 <% @visitors.each do |v| %>
 <tr>
   <td><p> <%= v.fullname %></p></td>
   <td><p><%= v.email %></p></td>
-  <td><%= link_to "Show", admin_visitor_path(v) %>
-      <%= link_to "Edit", edit_admin_visitor_path(v) %>
+  <td><%= time_ago v.created_at %></td>
+  <td>
       <%= link_to "Delete", admin_visitor_path(v), method: :delete, data: {confirm: "Are you sure you want delete the visitor"} %>
   </td>
 </tr>

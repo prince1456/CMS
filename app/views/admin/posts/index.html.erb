@@ -2,10 +2,7 @@
 
  <%= render_breadcrumbs %>
 <div class="container">
-  <%= form_tag(admin_posts_path, method: :get) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search' %>
-  <% end %>
+  <%= render 'search', route: admin_posts_path %>
         <p>
             <%= link_to "New Post", new_admin_post_path %>
         </p>

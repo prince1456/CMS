@@ -25,6 +25,7 @@
 # 15.times do
 #   messages= Message.create(
 #   content: Faker::Lorem.sentence(3),
+#   status: [true, false].sample,
 #   visitor_id: [1,2,3,4,5,6,7,8,9,10].sample
 #   )
 # end
@@ -35,11 +36,29 @@
 #   )
 # end
  # add 10 diffrent comment in diffrent posts
-10.times do |x|
-  comment = Comment.create(
-  message: Faker::Lorem.sentence,
-  status: [true, false].sample,
-  visitor_id: x+1+1,
-  post_id: x+15
+# 10.times do |x|
+#   comment = Comment.create(
+#   message: Faker::Lorem.sentence,
+#   status: [true, false].sample,
+#   visitor_id: x+1+1,
+#   post_id: x+15
+#   )
+# end
+15.times do |x|
+  visitor = Visitor.create(
+  fullname: Faker::Name.name,
+  email: Faker::Internet.email
   )
+    comment = Comment.create(
+    message: Faker::Lorem.sentence,
+    status: [true, false].sample,
+    visitor_id: visitor,
+    post_id: x+15
+    )
+    notifiable = [visitor, comment].sample
+    notification = Notification.create(
+    notifiable_id: notifiable.id,
+    notifiable_type: notifiable.class.name
+    )
+
 end
