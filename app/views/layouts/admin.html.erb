@@ -6,6 +6,7 @@
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     </head>
 a
     <body>
@@ -19,7 +20,19 @@ a
             <%= flash[:alert] %>
         </div>
         <% end %>
+
         <%= link_to "log out", logout_path %>
+        <p>
+        <%= link_to "Dashbord", admin_dashboard_path %>
+        <%= link_to "Moderator", admin_moderators_path %>
+        <%= link_to "Posts", admin_posts_path %>
+        <%= link_to "Tags", new_admin_tag_path %>
+        <%= link_to "comments", admin_comments_path %>
+        <%= link_to "visitors", admin_visitors_path %>
+        <%= link_to "Messages", admin_messages_path %>
+
+        <%= link_to "Notifications", admin_notifications_path %>
+        </p>
         <%= yield %>
     </body>
 </html>

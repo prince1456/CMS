@@ -1,0 +1,8 @@
+<h1>Admin::Messages#edit</h1>
+<%= form_for [:admin, @message] do |f| %>
+<%= f.label :content %>
+<%= f.text_area :content %>
+
+<br>
+<%= f.submit "Update" %>
+<% end %>

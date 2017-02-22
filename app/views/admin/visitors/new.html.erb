@@ -1,0 +1,13 @@
+<h1>Admin::Visitors#new</h1>
+
+<%= form_for [:admin, @visitor] do |v| %>
+<p>
+<%= v.label :fullname %>
+<%= v.text_field :fullname %>
+</p>
+<p>
+<%= v.label :email %>
+<%= v.text_field :email %>
+</p>
+<%= v.submit %>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>
+    New tag Form
+</h1>
+<div class="container">
+    <%= form_for [:admin, @tag] do |f| %>
+    <%= f.text_area :name, placeholder: 'e.g Ruby, Payton, Php' %>
+    <%= f.submit %>
+    <% end %>
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Created</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.name %></td>
+          <td><%= status_convertor(tag.in_use?, truthy: "in use", falsey: "Not in use") %></td>
+          <td><%= time_ago tag.created_at %></td>
+          <td><%= link_to edit_admin_tag_path(tag) do %>
+                  <button type="button"> Edit </button>
+              <% end %>
+              <%= create_deletable_button tag %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

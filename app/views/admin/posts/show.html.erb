@@ -1,2 +1,20 @@
 <h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<p>
+    <b>Title:
+    </b>
+    <%= @post.title %></p>
+<br>
+<p>
+    <b>Content:
+    </b><%= @post.content %></p>
+<br>
+<p>
+    <b>Publish:</b>
+    <%= status_convertor(@post.publish) %></p>
+<br>
+<p><b>User: </b><%= @post.moderator.fullname %></p>
+<p><b>Created at: </b><%= time_ago(@post.created_at)  %></p>
+<% @post.comments.each do |comment| %>
+<h4><%= comment.visitor.fullname %></h4>
+<div class="container"><%= comment.message %></div>
+<% end %>

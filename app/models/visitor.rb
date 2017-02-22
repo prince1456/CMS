@@ -1,5 +1,5 @@
 class Visitor < ApplicationRecord
-  has_many :comments
-  has_many :notifications, as: :notifiable
-  has_many :messages
+  has_many :comments, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end

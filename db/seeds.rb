@@ -5,9 +5,60 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-moderator = Moderator.create(
-  fullname: "Ali",
-  username: "ali@gmail.com",
-  password: "example" )
+# array = [1,2,3]
+# moderator = Moderator.create(
+#   fullname: "hamed",
+#   username: "hamed@gmail.com",
+#   password: "Princeh" )
+# 100.times do |x|
+# post = Post.create(
+#   title: Faker::Lorem.sentence(23),
+#   content: Faker::Lorem.paragraph,
+#   publish: true,
+#   moderator: moderator
+#   )
+#   tag = Tag.create(name: Faker::Lorem.word)
+#   post_tag =PostTag.create(post: post, tag: tag)
+# end
 
-  
+#  add 15 messages
+# 15.times do
+#   messages= Message.create(
+#   content: Faker::Lorem.sentence(3),
+#   status: [true, false].sample,
+#   visitor_id: [1,2,3,4,5,6,7,8,9,10].sample
+#   )
+# end
+
+# 8.times do
+#   tags = Tag.create(
+#     name: Faker::Book.genre
+#   )
+# end
+ # add 10 diffrent comment in diffrent posts
+# 10.times do |x|
+#   comment = Comment.create(
+#   message: Faker::Lorem.sentence,
+#   status: [true, false].sample,
+#   visitor_id: x+1+1,
+#   post_id: x+15
+#   )
+# end
+15.times do |x|
+  visitor = Visitor.create(
+  fullname: Faker::Name.name,
+  email: Faker::Internet.email
+  )
+    comment = Comment.create(
+    message: Faker::Lorem.sentence,
+    status: [true, false].sample,
+    visitor_id: visitor,
+    post_id: x+15
+    )
+    notifiable = [visitor, comment].sample
+    notification = Notification.create(
+    notifiable_id: notifiable.id,
+    notifiable_type: notifiable.class.name
+    )
+
+end
