@@ -1,0 +1,18 @@
+<div class="top-bar navbar-top-fix">
+    <h1 class="logo">
+        <%= link_to Setting.site_name, root_path, class: "webname"%></h1>
+      <button class="hamburger" data-toggle='modal' data-target="#navBar">&#9776;</button>
+    </a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="navBar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <%= link_to "Home", root_path %>
+      </div>
+    </div>
+  </div>
+</div>

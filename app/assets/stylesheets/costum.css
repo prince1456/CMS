@@ -1,0 +1,28 @@
+.hamburger{
+  font-size: 3em important!;
+  background:none;
+  position:absolute;
+  top:0;
+  right:0;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#999;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+
+.top-bar{
+  font-size: 3em;
+}
+.label-warning{
+  margin-left: 3px
+}
+
+@media screen and (min-width: 0px) and (max-width: 720px) {
+  .webname { display: none; }
+  .mobile-hide{ display: none; }
+}

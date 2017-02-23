@@ -7,7 +7,6 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
-a
     <body>
         <% if flash[:notice] %>
         <div class="notice">
@@ -19,7 +18,9 @@ a
             <%= flash[:alert] %>
         </div>
         <% end %>
-        <%= link_to "log out", logout_path %>
+      
+        <%= render 'layouts/navbar' %>
+
         <%= yield %>
     </body>
 </html>

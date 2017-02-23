@@ -11,4 +11,8 @@ class Post < ApplicationRecord
     def self.matching_title_or_content search
       where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%")
     end
+
+    def self.filter_by_tags param_tag
+      includes(:tags).where(publish: true, tags: {name: param_tag}).order(id: :DESC)
+    end
 end
