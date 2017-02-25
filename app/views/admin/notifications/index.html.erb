@@ -6,17 +6,24 @@
  %>
 
 <% @visitor_notifications.each do |notif| %>
-<p>
-  <%= notif.notifiable.fullname %>
-  <%= "#{notif.notifiable.fullname} added as a new visitor #{time_ago notif.created_at}" %>
-  <%= link_to "Dismiss", admin_notification_path(notif), method: :delete, data: {confirm: "Are you sure?"} %>
-</p>
+  <p>
+    <%= notif.notifiable.fullname %>
+    <%= "#{notif.notifiable.fullname} added as a new visitor #{time_ago notif.created_at}" %>
+    <%= link_to "Dismiss", admin_notification_path(notif), method: :delete, data: {confirm: "Are you sure?"} %>
+  </p>
 <% end %>
 <hr>
 <% @comment_notifications.each do |notif| %>
-<p>
+  <p>
 
-  <%= "#{notif.notifiable.visitor.fullname} added as a new visitor #{time_ago notif.created_at}" %>
-  <%= link_to "Dismiss", admin_notification_path(notif), method: :delete, data: {confirm: "Are you sure?"} %>
-</p>
+    <%= "#{notif.notifiable.visitor.fullname} added as a new comment #{time_ago notif.created_at}" %>
+    <%= link_to "Dismiss", admin_notification_path(notif), method: :delete, data: {confirm: "Are you sure?"} %>
+  </p>
+<% end %>
+<hr>
+<% @message_notifications.each do |notif| %>
+  <p>
+    <%= "#{notif.notifiable.visitor.fullname} sent you a message #{time_ago notif.created_at}" %>
+    <%= link_to "Dismiss", admin_notification_path(notif), method: :delete, data: {confirm: "Are you sure?"} %>
+  </p>
 <% end %>

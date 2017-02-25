@@ -1,9 +1,7 @@
 class Admin::PostsController < Admin::ApplicationController
-   add_breadcrumb "home", :admin_posts_path
-   add_breadcrumb "my", :admin_posts_path
 
     def index
-        add_breadcrumb "index", admin_posts_path
+        add_breadcrumb "All posts", admin_posts_path
         if params[:search].present?
           @posts = Post.matching_title_or_content(params[:search]).page params[:page]
         else
@@ -12,6 +10,7 @@ class Admin::PostsController < Admin::ApplicationController
     end
 
     def new
+
         @post = Post.new
     end
 

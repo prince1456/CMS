@@ -7,4 +7,9 @@ class Comment < ApplicationRecord
   def self.search_comments search
     joins(:visitor).where("fullname ILIKE ? OR message ILIKE ?", "%#{search}%", "%#{search}%")
   end
+
+  after_save :notify
+  def notify
+    notifications.build.save
+  end
 end

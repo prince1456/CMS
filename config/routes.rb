@@ -15,10 +15,9 @@ root "posts#index"
     resources :tags, expect: [:index]
     resources :messages, only: [:index, :create, :destroy, :show, :edit, :update]
     resources :visitors, only: [:index, :destroy]
-    resources :moderators, only: [:index, :edit, :update]
+    resources :moderators, only: [:index, :edit, :update, :show]
     resources :sessions, only: [:new, :destroy, :create]
   end
-  resources :
   resources :posts, only: [:index, :show]
   resources :messages, only: [:new, :create]
   resources :comments, only: [:create]

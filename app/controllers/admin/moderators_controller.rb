@@ -1,12 +1,11 @@
 class Admin::ModeratorsController < Admin::ApplicationController
+  before_action :find_params, only: [:show, :edit, :update]
   def index
     @moderators = Moderator.all
   end
   def edit
-    @moderator = Moderator.find(params[:id])
   end
   def update
-      @moderator = Moderator.find(params[:id])
       if @moderator.update(moderator_params)
         flash[:notice] = " Moderator successfully updated"
         redirect_to admin_moderators_path
@@ -15,9 +14,15 @@ class Admin::ModeratorsController < Admin::ApplicationController
         render 'edit'
      end
   end
+  def show
+
+  end
 
 
   private
+  def find_params
+      @moderator = Moderator.find(params[:id])
+  end
   def moderator_params
     params.require(:moderator).permit(:id, :fullname, :username, :password)
 
