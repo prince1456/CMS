@@ -6,7 +6,8 @@ class Post < ApplicationRecord
     validates :title, presence: true
     validates :content, presence: true
 
-
+    mount_uploader :image, ImageUploader
+    scope :published, -> {where(publish: true).order(id: :DESC) }
 
     def self.matching_title_or_content search
       where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%")

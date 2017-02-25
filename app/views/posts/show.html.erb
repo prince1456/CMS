@@ -1,2 +1,41 @@
 <h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= link_to "All Posts", posts_path %>
+<p>
+    <%= @post.title %>
+    <%= time_ago @post.created_at %>
+</p>
+<p>
+  <%= @post.content %>
+</p>
+
+<h3>commment</h3>
+
+<% @post.comments.approved.each.with_index(1) do |comment, index| %>
+<p>
+  <%= comment.message %> <b><%= double_digit(index) %></b>
+</p>
+<p>
+  <b><%= comment.visitor.fullname %></b> commented: <%= time_ago comment.created_at  %>
+</p>
+<hr>
+<% end %>
+
+<%= form_for @visitor_comment, url: comments_url do |f| %>
+  <p>
+    <%= f.label :fullname %>
+    <br>
+    <%= f.text_field :fullname %>
+  </p>
+
+  <p>
+      <%= f.label :email %>
+      <br>
+      <%= f.text_field :email %>
+      </p>
+    <%= f.fields_for :comments do |c| %>
+    <%= c.label :message %><br>
+    <%= c.text_area :message %>
+    <%= c.hidden_field :post_id, value: @post.id %>
+    <% end %>
+  <p><%= f.submit %></p>
+<% end %>
