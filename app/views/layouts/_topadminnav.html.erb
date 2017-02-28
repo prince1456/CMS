@@ -59,6 +59,7 @@
                  </ul>
              </li>
              <li class="dropdown">
+               <% if @moderator %>
                  <%= link_to  admin_moderator_path(@moderator), class: "dropdown-toggle", :data => {:toggle=>"dropdown"} do %>
                     <i class="fa fa-user"></i>
                     <%= @moderator.fullname %>
@@ -90,6 +91,7 @@
                                Log out
                                <i class="fa fa-fw fa-power-off"></i>
                            <% end %>
+              <% end %>
                      </li>
                  </ul>
              </li>

@@ -10,7 +10,7 @@ class Admin::PostsController < Admin::ApplicationController
     end
 
     def new
-
+        add_breadcrumb "New Post", new_admin_post_path
         @post = Post.new
     end
 

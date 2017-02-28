@@ -21,6 +21,17 @@
 .label-warning{
   margin-left: 3px
 }
+.content{
+  width: 100%;
+  position: absolute;
+  color: 000;
+  background-color: rgba(255, 255, 255, 0.29);
+  padding-left: 40px;
+  bottom: 0px;
+}
+.content-wraper{
+  color: black
+}
 
 @media screen and (min-width: 0px) and (max-width: 720px) {
   .webname { display: none; }

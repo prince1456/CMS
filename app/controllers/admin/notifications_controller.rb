@@ -1,5 +1,7 @@
 class Admin::NotificationsController < Admin::ApplicationController
   def index
+    add_breadcrumb "List notifications", admin_notifications_path
+
     @visitor_notifications = Notification.where(notifiable_type: 'Visitor').order(id: :DESC)
     @comment_notifications = Notification.where(notifiable_type: 'Comment').order(id: :DESC)
     @message_notifications = Notification.where(notifiable_type: 'Message').order(id: :DESC)

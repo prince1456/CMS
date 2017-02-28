@@ -1,5 +1,6 @@
 class Admin::CommentsController < Admin::ApplicationController
   def index
+    add_breadcrumb "List Comments", admin_comments_path
     if params[:search].present?
       @comments = Comment.search_comments(params[:search]).page params[:page]
     else

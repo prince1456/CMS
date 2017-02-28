@@ -23,7 +23,8 @@ class Admin::VisitorsController < Admin::ApplicationController
     @visitor =Visitor.find(params[:id])
   end
   def index
-    @visitors = Visitor.all.order(created_at: :desc)
+    add_breadcrumb "Visitors", admin_visitors_path
+    @visitors = Visitor.all.order(created_at: :desc).page params[:page]
   end
 
   def new

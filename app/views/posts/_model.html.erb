@@ -1,0 +1,58 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="modal-body">
+                <p>
+                    <%= post.title %>
+                    <%= time_ago post.created_at %>
+                </p>
+                <p>
+                    <%= post.content %>
+                </p>
+
+                <h3>commment</h3>
+
+                <% post.comments.approved.each.with_index(1) do |comment, index| %>
+                <p>
+                    <%= comment.message %>
+                    <b><%= double_digit(index) %></b>
+                </p>
+                <p>
+                    <b><%= comment.visitor.fullname %></b>
+                    commented:
+                    <%= time_ago comment.created_at  %>
+                </p>
+                <hr>
+                <% end %>
+
+                <%= form_for @visitor_comment, url: comments_url do |f| %>
+                <p>
+                    <%= f.label :fullname %>
+                    <br>
+                    <%= f.text_field :fullname %>
+                </p>
+
+                <p>
+                    <%= f.label :email %>
+                    <br>
+                    <%= f.text_field :email %>
+                </p>
+                <%= f.fields_for :comments do |c| %>
+                <%= c.label :message %><br>
+                <%= c.text_area :message %>
+                <%= c.hidden_field :post_id, value: post.id %>
+                <% end %>
+                <p><%= f.submit %></p>
+                <% end %>
+
+            </div>
+
+        </div>
+    </div>
+</div>

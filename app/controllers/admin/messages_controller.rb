@@ -3,6 +3,7 @@ class Admin::MessagesController < Admin::ApplicationController
   before_action :find_params, only: [:destroy, :show, :update, :edit]
 
   def index
+    add_breadcrumb "Message List", admin_messages_path
     if params[:search].present?
       @messages = Message.search_message(params[:search]).page params[:page]
     else
