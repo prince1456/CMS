@@ -1,3 +1,16 @@
+body{
+  background-image: url(/assets/rockywall.png);
+  font-family: 'Lato',sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    /*margin: 10px 0;*/
+    /*font-family: inherit;*/
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    font-family: "Lora", sans-serif;
+}
 .hamburger{
   font-size: 3em important!;
   background:none;
@@ -16,6 +29,10 @@
 }
 
 .top-bar{
+  position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100000;
   font-size: 3em;
 }
 .label-warning{
@@ -37,3 +54,217 @@
   .webname { display: none; }
   .mobile-hide{ display: none; }
 }
+
+.top-nav{
+  background-color: #2B2B2B;
+  height: 50px;
+}
+.header{
+    background: #f6f6f6;
+    background: #f6f6f6 url(http://4.bp.blogspot.com/-tUKuYySzRzk/VokxbwGGkcI/AAAAAAAADLk/4cViDdmXe5A/s1600/amsterdam-954381_1280.jpg) no-repeat fixed top center;
+    height: 200px;
+    background-position: top;
+    background-size: cover;
+    text-align: center;
+
+}
+.cover-shadow {
+    padding-top: 50px;
+    color:white;
+    background: rgba(0, 0, 0, 0.49);
+    min-height: 200px;
+    font-family: 'Pacifico', cursive;
+}
+  /*background-color: #DE1B1B;
+  height: 160px;*/
+/*}*/
+.header-sidebar{
+  margin-bottom: 20px;
+  padding-top: 15px;
+  height: 50px;
+  width: 100%;
+  background-color: #2B2B2B;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.content-post{
+  text-align: left;
+}
+.container-box{
+  background: #ffffff;
+    margin-top: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.container{
+  margin-left: auto;
+  margin-right: auto;
+}
+.article-container{
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 1200px){
+  .container {
+      width: 1170px;}
+}
+.img-post{
+  display: inline-block;
+    overflow: hidden;
+}
+.img-post img{
+  width: 100%;
+  height:300px
+}
+.img-post img:hover{
+  opacity:0.7;
+}
+.side-bar-space{
+  margin-bottom: 5px
+}
+.sidebar-recent{
+  font-size: 1em;
+  color: black;
+  font-weight: bold;
+}
+.post-box{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    -webkit-box-shadow: 2px 3px 18px -1px rgba(247,247,247,1);
+    -moz-box-shadow: 2px 3px 18px -1px rgba(247,247,247,1);
+    box-shadow: 2px 3px 18px -1px rgba(247,247,247,1);
+
+}
+.footer{
+  height: 250px;
+  background-color: black;
+  padding-left: 10px;
+  padding-top: 50px
+
+}
+.copyright{
+  border-top: solid gray 1px;
+  height: 60px;
+  background-color: #2B2B2B;
+  color: black;
+  padding-top: 20px;
+  text-align: center;
+}
+
+
+
+.container-show-post{
+  padding-left: 100px;
+}
+
+
+
+
+
+
+
+
+
+/*comment*/
+
+p {
+    margin: 0 0 1em;
+}
+
+.comment {
+    overflow: hidden;
+    padding: 0 0 1em;
+    border-bottom: 1px solid #ddd;
+    margin: 0 0 1em;
+    *zoom: 1;
+}
+
+.comment-img {
+    float: left;
+    margin-right: 33px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comment-img img {
+    display: block;
+}
+
+.comment-body {
+    overflow: hidden;
+}
+
+.comment .text {
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.comment .text p:last-child {
+    margin: 0;
+}
+
+.comment .attribution {
+    margin: 0.5em 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Decoration */
+
+.comments,
+.comment {
+    position: relative;
+}
+
+.comments:before,
+.comment:before,
+.comment .text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+
+.comments:before {
+    width: 3px;
+    top: -20px;
+    bottom: -20px;
+    background: rgba(0,0,0,0.1);
+}
+
+.comment:before {
+    width: 9px;
+    height: 9px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    margin: 16px 0 0 -6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+    background: #ccc;
+}
+
+.comment:hover:before {
+    background: orange;
+}
+
+.comment .text:before {
+    top: 18px;
+    left: 78px;
+    width: 9px;
+    height: 9px;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: #e5e5e5;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}​

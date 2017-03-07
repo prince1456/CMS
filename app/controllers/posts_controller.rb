@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     elsif params[:id]
       @post = Post.find(params[:id])
     else
+      @posts2 = Post.last(5)
       @visitor_comment = Visitor.new(comments: [Comment.new])
       @comment = Comment.new
     @posts = Post.published.page(params[:page]).per(Setting.post_per_page)
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @posts2 = Post.last(5)
     @post = Post.find(params[:id])
     @visitor_comment = Visitor.new(comments: [Comment.new])
     @comment = Comment.new

@@ -267,7 +267,7 @@ ul.alert-dropdown {
 
 /*pagination style*/
 .digg_pagination {
-  background: white;
+  /*background: white;*/
   cursor: default;
   /* self-clearing method: */ }
   .digg_pagination a, .digg_pagination span, .digg_pagination em {
