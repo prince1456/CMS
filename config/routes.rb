@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
 root "posts#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -7,6 +8,7 @@ root "posts#index"
   get '/logout' => "admin/sessions#destroy"
 
   namespace :admin do
+    resources :pages
     resources :posts
     resources :settings, only: [:new, :create, :edit, :update]
     resources :dashboard, only: [:index]
@@ -21,6 +23,8 @@ root "posts#index"
   resources :posts, only: [:index, :show]
   resources :messages, only: [:new, :create]
   resources :comments, only: [:create]
+  resources :pages, only: [:show]
+
 
 
 

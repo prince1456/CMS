@@ -7,18 +7,23 @@
                 <i class="icon-menu"></i>
                 Menu
             </button>
-            
+
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
 
                 <li>
-                    <a href="/articles" title="Start Bootstrap News, Guides, and Tutorials">Articles</a>
+                  <%= link_to "Articles", root_path %>
                 </li>
                 <li>
                     <a href="/contact" title="Contact the Start Bootstrap Team">Contact</a>
                 </li>
+                <% Page.all.each do |p| %>
+                <li>
+                  <%= link_to p.title, page_path(p) %>
+                </li>
+                <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
