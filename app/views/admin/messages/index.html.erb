@@ -1,31 +1,42 @@
-<h1>Admin::Messages#index</h1>
-<%= render "search", route: admin_messages_path %>
-<table class="table table-striped">
-    <tr>
-        <th>From</th>
-        <th>Email</th>
-        <th>Content</th>
-        <th>Status</th>
-        <th>Create at</th>
-        <th>Action</th>
-    </tr>
-    <% @messages.each do |message| %>
-    <p style=<%= messages_weight(message) %>>
+<div class="box">
+    <div class="table-header ">
+        <div class="pull-left">
+            <h4>All Messages</h4>
+        </div>
+        <div class="col-md-3 pull-right">
+            <%= render "search", route: admin_messages_path %>
+        </div>
+    </div>
+
+    <table class="table table-striped">
         <tr>
-            <td><%= message.visitor.fullname %></td>
-            <td><%= message.visitor.email %></td>
-            <td>
-                <p style=<%= '#{weight}' %>><%= truncate(message.content, length: 80, separator: "") %></p>
-            </td>
-            <td><%= status_convertor(message.status, truthy: "Read", falsey: "Not read") %></td>
-            <td><%= time_ago message.created_at %></td>
-            <td><%= link_to "Show", admin_message_path(message) %>
-                <%= link_to "Edit", edit_admin_message_path(message) %>
-                <%= link_to "Delete", admin_message_path(message), method: :delete, data: { confirm: "Are you sure?"} %>
-                <%=build_read_status_link(message)%>
-            </td>
+            <th>From</th>
+            <th>Email</th>
+            <th>Content</th>
+            <th>Status</th>
+            <th>Create at</th>
+            <th>Action</th>
         </tr>
-    </p>
-    <% end %>
-</table>
-<%= paginate @messages %>
+        <% @messages.each do |message| %>
+        <p style=<%= messages_weight(message) %>>
+            <tr>
+                <td><%= message.visitor.fullname %></td>
+                <td><%= message.visitor.email %></td>
+                <td>
+                    <p style=<%= '#{weight}' %>><%= truncate(message.content, length: 80, separator: "") %></p>
+                </td>
+                <td><%= status_convertor(message.status, truthy: "Read", falsey: "Not read") %></td>
+                <td><%= time_ago message.created_at %></td>
+                <td><%= link_to "Show", admin_message_path(message) %>
+                    <%= link_to "Edit", edit_admin_message_path(message) %>
+                    <%= link_to "Delete", admin_message_path(message), method: :delete, data: { confirm: "Are you sure?"} %>
+                    <%=build_read_status_link(message)%>
+                </td>
+            </tr>
+        </p>
+        <% end %>
+    </table>
+    <div class="digg_pagination text-center">
+        <%= paginate @messages %>
+    </div>
+</div>

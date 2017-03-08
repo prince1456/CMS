@@ -1,0 +1,86 @@
+<div class="row top-nav"></div>
+<div class="row header">
+    <div class="cover-shadow">
+        <h1><%= Setting.site_name %></h1>
+    </div>
+</div>
+<div class="container container-box">
+    <div class="row article-container">
+        <div class="col-md-8">
+            <% @posts.each do |post| %>
+            <div class="post-box">
+                <div class="img-post img-responsive">
+                    <%= image_tag(post.image) %>
+                </div>
+                <h2><%= link_to truncate(post.title, length: 40, seprator: " " ), post_path(post)%></h2>
+                <h5>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    author published at
+                    <%= time_ago post.created_at %>
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    <span class="comment-count"><%= post.comments.count %>
+                        Comments
+                        <i class="fa fa-comments-o"></i>
+                    </span>
+                </h5>
+                <div class="content-post">
+                    <p>
+                        <%= truncate(post.content, length: 105, seprator: " ")%>
+                    </p>
+                    <p><%= link_to "Continue Reading ...", post_path(post)%>
+                        <i class="fa fa-tags" aria-hidden="true"></i>
+                        <% if Setting.tag_visibility %>
+                        <%post.tags.each do |tag|  %>
+                        <%= link_to tag.name, posts_path(tag: tag.name) %>
+                        <% end %>
+                        <% end %></p>
+                </div>
+            </div>
+            <% end %>
+
+        </div>
+        <div class="col-md-4 pull-right">
+            <div class="row header-sidebar">
+                About
+            </div>
+            <div class="row">
+                <img src="http://1.bp.blogspot.com/-2jn1lf9PfmI/VofwVhP4AmI/AAAAAAAADKY/DoZGnNEBGXM/w750-h400-c/winter-wonderland-1082511_640.jpg" height=200px; width=250px alt="">
+                <p>this is about me
+                </p>
+            </div>
+            <div class="row header-sidebar">
+                Recent Post
+            </div>
+            <div class="row">
+
+                <div class="sidebar-recent">
+                    <% @posts2.each do |post| %>
+                    <div class="row side-bar-space">
+                        <div class="col-md-4">
+                            <%= image_tag(post.image_url(:thumb).to_s) if post.image? %>
+                        </div>
+                        <div class="col-md-8">
+                            <%= truncate(post.title, length:40, seprator: " ") %>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="digg_pagination text-center">
+        <%= paginate @posts %>
+    </div>
+
+    <div class="row footer">
+        <div class="col-md-4">
+            <h3>about</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>Newsletters</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>Follow Us</h3>
+        </div>
+    </div>
+    <div class="row copyright">© Blogs Admin . Powered by Ruby on Rails . By Ali Alizada .</div>

@@ -1,0 +1,98 @@
+
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <%= link_to "#{Setting.site_name}Admin", admin_dashboard_index_path, class: "navbar-brand" %>
+         </div>
+         <!-- Top Menu Items -->
+         <ul class="nav navbar-right top-nav">
+             <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                 <ul class="dropdown-menu message-dropdown">
+                   <%  Message.messages.each do |message| %>
+                     <li class="message-preview">
+                         <a href="#">
+                             <div class="media">
+                                 <span class="pull-left">
+                                     <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                 </span>
+                                 <div class="media-body">
+                                     <h5 class="media-heading"><strong><%= message.visitor.fullname %></strong>
+                                     </h5>
+                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> <%= time_ago message.created_at %></p>
+                                     <p> <%= message.content %></p>
+                                 </div>
+                             </div>
+                         </a>
+                     </li>
+                     <% end %>
+
+                     <li class="message-footer">
+                         <%= link_to "View All Messages", admin_messages_path %>
+                     </li>
+                 </ul>
+             </li>
+             <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i><%= Notification.count %> <b class="caret"></b></a>
+                 <ul class="dropdown-menu alert-dropdown">
+
+                     <li>
+                         <a href="#"> you have  <span class="label label-info"><%= pluralize(Notification.count_comment, 'Comment', 'Comments') %></span></a>
+                     </li>
+                     <li>
+                         <a href="#"> you have  <span class="label label-info"><%= pluralize(Notification.count_message, 'Message', 'Messsages') %></span></a>
+                     </li>
+                     <li>
+                         <a href="#"> you have  <span class="label label-info"><%= pluralize(Notification.count_visitor, 'Visitor', 'Visitors') %></span></a>
+                     </li>
+
+
+                     <li class="divider"></li>
+                     <li>
+                         <%= link_to "View All", admin_notifications_path %>
+                     </li>
+                 </ul>
+             </li>
+             <li class="dropdown">
+               <% if @moderator %>
+                 <%= link_to  admin_moderator_path(@moderator), class: "dropdown-toggle", :data => {:toggle=>"dropdown"} do %>
+                    <i class="fa fa-user"></i>
+                    <%= @moderator.fullname %>
+                    <b class="caret"></b>
+                    <% end %>
+                 <ul class="dropdown-menu">
+                     <li>
+                          <%= link_to  admin_moderator_path(@moderator) do %>
+                          <i class="fa fa-fw fa-user"></i>
+                           Profile
+                           <% end %>
+                     </li>
+                     <li>
+                       <%= link_to admin_messages_path do  %>
+                         <i class="fa fa-fw fa-envelope"></i>
+                           Inbox
+                      <% end %>
+                     </li>
+                     <li>
+                       <li> <%= link_to new_admin_setting_path do %>
+                         Settings
+                         <i class="fa fa-fw fa-gear"></i>
+                         <% end %>
+                       </li>
+
+                     </li>
+                     <li class="divider"></li>
+                       <li> <%= link_to logout_path do %>
+                               Log out
+                               <i class="fa fa-fw fa-power-off"></i>
+                           <% end %>
+              <% end %>
+                     </li>
+                 </ul>
+             </li>
+         </ul>

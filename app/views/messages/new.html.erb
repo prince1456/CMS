@@ -1,0 +1,19 @@
+<h1>Messages#new</h1>
+<%= form_for @visitor_message, url: messages_url do |f| %>
+  <p>
+    <%= f.label :fullname %>
+    <br>
+    <%= f.text_field :fullname %>
+  </p>
+
+  <p>
+      <%= f.label :email %>
+      <br>
+      <%= f.text_field :email %>
+      </p>
+    <%= f.fields_for :messages do |c| %>
+    <%= c.label :content %><br>
+    <%= c.text_area :content %>
+    <% end %>
+  <p><%= f.submit %></p>
+<% end %>

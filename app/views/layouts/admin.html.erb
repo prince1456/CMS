@@ -3,12 +3,12 @@
     <head>
         <title>Blogadmin</title>
         <%= csrf_meta_tags %>
-
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     </head>
-a
     <body>
         <% if flash[:notice] %>
         <div class="notice">
@@ -20,19 +20,33 @@ a
             <%= flash[:alert] %>
         </div>
         <% end %>
-
-        <%= link_to "log out", logout_path %>
-        <p>
-        <%= link_to "Dashbord", admin_dashboard_index_path %>
-        <%= link_to "Moderator", admin_moderators_path %>
-        <%= link_to "Posts", admin_posts_path %>
-        <%= link_to "Tags", new_admin_tag_path %>
-        <%= link_to "comments", admin_comments_path %>
-        <%= link_to "visitors", admin_visitors_path %>
-        <%= link_to "Messages", admin_messages_path %>
-        <%= link_to "Notifications", admin_notifications_path %>
-        <%= link_to "Settings", new_admin_setting_path %>
         </p>
-        <%= yield %>
+         <div id="wrapper">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <%= render "layouts/topadminnav" %>
+                <%= render "layouts/sidebaradmin" %>
+            </nav>
+
+            <div id="page-wrapper">
+             <div class="container-fluid">
+               <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Dashboard <small></small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Dashboard  <%= render_breadcrumbs :separator => ' / ' %>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                      <%= yield %>
+              </div>
+            </div>
+
+        </div>
+
     </body>
 </html>

@@ -1,0 +1,36 @@
+
+<div id="team" class="pt-page">
+			<div class="scalediv">
+				<div class="row no-gutter" data-id="one">
+          <% @posts.each do |post| %>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<figure class="callpost" data-num="1" style="height: 350px;background-image:url('<%= post.image %>'); background-blend-mode: hard-light;" data-property="border-width" data-from="0" data-to="450px">
+							<div class="content">
+								<div class="content-wraper">
+									<h2>  <%= link_to truncate(post.title, length: 40, seprator: " " ), post_path(post), id: "hello", data: {toggle: "modal", target: "#myModal"}, :remote => true%> <br></h2>
+												<%= render "model", post: post %>
+									<div class="comment-count"><%= post.comments.count %> Comments <i class="fa fa-comments-o"></i> </div>
+									<div class="excerpt"><%= truncate(post.content, length: 105, seprator: " ") {link_to "Read More", post_path(post)}%> </div>
+									<div class="postinfo">
+                    <% if Setting.tag_visibility %>
+                      <%post.tags.each do |tag|  %>
+                      <span class="label label-warning"><%= link_to tag.name, posts_path(tag: tag.name) %> </span>
+                      <% end %>
+                    <% end %>
+                    <span > <%= time_ago post.created_at %></span> </div>
+								</div>
+							</div>
+						</figure>
+					</div>
+          <% end %>
+        </div>
+    </div>
+</div>
+<br>
+  <div class="digg_pagination text-center">
+		<%= paginate @posts %>
+	</div>
+
+
+
+<!-- Button trigger modal -->

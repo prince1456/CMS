@@ -9,6 +9,9 @@
     </b><%= @post.content %></p>
 <br>
 <p>
+  <%= image_tag @post.image.url %>
+</p>
+<p>
     <b>Publish:</b>
     <%= status_convertor(@post.publish) %></p>
 <br>

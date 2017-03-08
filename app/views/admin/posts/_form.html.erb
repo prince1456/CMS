@@ -1,12 +1,25 @@
 <p><%= render "validation_errors", object: @post %></p>
 
-<%= form_for [:admin, @post] do |f| %>
-<p> <%= f.label :title %>
-<%= f.text_field :title %></p><br>
-<p><%= f.label :content %>
-<%= f.text_field :content %></p><br>
-<p><%= f.label :publish %>
-<%= f.check_box :publish %></p><br>
-<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: 'Select Tag'}, multiple: :true %>
-<%= f.submit %>
+<%= form_for [:admin, @post], class:"formgroup" do |f| %>
+  <div class="form-group">
+      <%= f.label :title%>
+      <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_field(:content, class: "form-control", size: 20) %>
+  </div>
+  <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image, class: "form-control" %>
+  </div>
+  <div class="checkbox">
+    <label >
+    <%= f.check_box :publish %>
+      Publish
+    </label>
+  </div>
+      <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: 'Select Tag'}, multiple: :true, class: "form-control" %>
+
+  <%= f.submit "Save post", class: "btn btn-default" %>
 <% end %>

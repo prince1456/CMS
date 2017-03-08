@@ -1,0 +1,64 @@
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                      <%= link_to admin_dashboard_index_path do %>
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        Dashboard
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to admin_posts_path do %>
+                        <i class="fa fa-fw fa-file-text-o"></i>
+                        Posts
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_admin_tag_path do %>
+                        <i class="fa fa-fw fa-tags"></i>
+                        Tags
+                       <% end %>
+                    </li>
+
+                    <li>
+                      <%= link_to admin_visitors_path do %>
+                        <i class="fa fa-fw fa-users"></i>
+                        Visitors
+                        <% end %>
+                    </li>
+                    <li>
+                      <%= link_to admin_messages_path do %>
+                        <i class="fa fa-fw fa-comments-o"></i>
+                        Messages
+                        <% end %>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Comment <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                              <%= link_to 'Approved', admin_comments_path(status: true) %>
+                            </li>
+                            <li>
+                                <%= link_to 'Un-approved', admin_comments_path(status: false) %>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                      <%= link_to admin_notifications_path do %>
+                        <i class="fa fa-fw fa-bullhorn"></i>
+                         Notifications
+                       <% end %>
+                    </li>
+                    <li>
+                      <%= link_to admin_pages_path do %>
+                        <i class="fa fa-fw fa-bullhorn"></i>
+                         Pages
+                       <% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_admin_setting_path do %>
+                        <i class="fa fa-fw fa-cogs"></i>
+                         Settings
+                         <% end %>
+                    </li>
+                </ul>
+            </div>

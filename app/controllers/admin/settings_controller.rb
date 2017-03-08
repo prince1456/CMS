@@ -1,5 +1,7 @@
 class Admin::SettingsController < Admin::ApplicationController
   def new
+    add_breadcrumb "Settings", new_admin_setting_path
+
     if Setting.any?
       redirect_to edit_admin_setting_path(Setting.first)
     else
@@ -18,6 +20,8 @@ class Admin::SettingsController < Admin::ApplicationController
   end
 
   def edit
+    add_breadcrumb "Settings", edit_admin_setting_path
+
     @setting = Setting.find(params[:id])
   end
 

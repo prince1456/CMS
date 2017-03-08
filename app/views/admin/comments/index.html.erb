@@ -1,23 +1,36 @@
-<h1>Comments</h1>
-<p>
-  <%= render "search", route: admin_comments_path %>
-</p>
-<p>
-  <%= link_to 'Approved', admin_comments_path(status: true) %>
-  <%= link_to 'Un-approved', admin_comments_path(status: false) %>
-</p>
-<% @comments.each do |comment| %>
-<p><b><%= comment.visitor.fullname %> </b> posted massage on <b> <%= comment.post.title %></b>
-  <br>
-  <%= comment.message %></p>
-  <%= link_to "Delete", admin_comment_path(comment), method: :delete, data: {confirm: "Are you sure?"} %>
-  <%=
-     if params[:status] == 'true'
-       link_to "Un-approve", admin_comment_path(comment, status: false), method: :put
-    else
-      link_to 'Approved', admin_comment_path(comment, status: true), method: :put
-    end
-  %>
-<hr>
-  <% end %>
-<%= paginate @comments %>
+<div class="box">
+        <div class="table-header ">
+            <div class="pull-left">
+                <h4>Comments</h4>
+            </div>
+            <div class="col-md-3 pull-right">
+                <%= render "search", route: admin_comments_path %>
+            </div>
+        </div>
+        <br>
+        <br>
+    <div class="comment-box">
+        <% @comments.each do |comment| %>
+        <p>
+            <b><%= link_to comment.visitor.fullname %>
+            </b>
+            posted massage on
+            <b>
+                <%= link_to comment.post.title.first(50), admin_post_path(comment) %></b>
+            <br>
+            <%= comment.message %></p>
+        <%= link_to "Delete", admin_comment_path(comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+    <%=
+       if params[:status] == 'true'
+         link_to "Un-approve", admin_comment_path(comment, status: false), method: :put,class: "btn btn-default"
+      else
+        link_to 'Approved', admin_comment_path(comment, status: true), method: :put,class: "btn btn-default"
+      end
+    %>
+        <hr>
+        <% end %>
+        <div class="digg_pagination text-center">
+            <%= paginate @comments %>
+        </div>
+    </div>
+</div>

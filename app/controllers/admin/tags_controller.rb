@@ -1,7 +1,9 @@
 class Admin::TagsController < Admin::ApplicationController
   def new
+    add_breadcrumb "Tags", new_admin_tag_path
+
     @tag = Tag.new
-    @tags = Tag.all.order(created_at: :DESC)
+    @tags = Tag.all.order(created_at: :DESC).page params[:page]
   end
   def index
     @tags = Tag.all.order(created_at: :DESC)

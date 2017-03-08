@@ -1,0 +1,6 @@
+
+<p>
+  name: <%= @moderator.fullname %></p>
+  <p>User name: <%= @moderator.username %></p>
+  <p>you have  <b><%= double_digit(@moderator.posts.count) %></b> posts</p>
+  <%= link_to "back", admin_dashboard_index_path %>
