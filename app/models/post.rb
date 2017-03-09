@@ -5,6 +5,12 @@ class Post < ApplicationRecord
     belongs_to :moderator
     validates :title, presence: true
     validates :content, presence: true
+    extend FriendlyId
+    friendly_id :title, use: [:slugged, :history]
+    #
+    # def should_generate_new_friendly_id?
+    #   new_record?
+    # end
 
     mount_uploader :image, ImageUploader
     scope :published, -> {where(publish: true).order(id: :DESC) }

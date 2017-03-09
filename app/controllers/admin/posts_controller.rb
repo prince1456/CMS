@@ -1,5 +1,5 @@
 class Admin::PostsController < Admin::ApplicationController
-
+  before_action :find_params, only:[:show, :update, :edit]
     def index
         add_breadcrumb "All posts", admin_posts_path
         if params[:search].present?
@@ -27,11 +27,9 @@ class Admin::PostsController < Admin::ApplicationController
     end
 
     def edit
-        @post = Post.find(params[:id])
     end
 
     def update
-        @post = Post.find(params[:id])
         if @post.update(post_params)
             redirect_to admin_posts_path, notice: 'updated successfully'
         else
@@ -47,10 +45,12 @@ class Admin::PostsController < Admin::ApplicationController
     end
 
     def show
-      @post = Post.find(params[:id])
     end
 
     private
+    def find_params
+      @post = Post.friendly.find(params[:id])
+    end
 
     def post_params
         params.require(:post).permit(:title, :content, :publish, :image ,tag_ids: []  )
