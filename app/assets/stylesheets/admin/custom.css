@@ -277,20 +277,20 @@ ul.alert-dropdown {
     margin-right: 1px; }
   .digg_pagination .disabled {
     color: #999999;
-    border: 1px solid #dddddd; }
+    border: 1px solid #e52a6f; }
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
     background: #2e6ab1;
     color: white;
-    border: 1px solid #2e6ab1; }
+    border: 1px solid #e52a6f; }
   .digg_pagination a {
     text-decoration: none;
-    color: #105cb6;
-    border: 1px solid #9aafe5; }
+    color: #675682;
+    border: 1px solid #e52a6f; }
     .digg_pagination a:hover, .digg_pagination a:focus {
       color: #000033;
-      border-color: #000033; }
+      border-color: #e52a6f; }
   .digg_pagination .page_info {
     background: #2e6ab1;
     color: white;

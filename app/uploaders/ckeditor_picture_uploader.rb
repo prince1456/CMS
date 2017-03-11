@@ -33,7 +33,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fill => [118, 100]
+    process :resize_to_fill => [120, 120]
   end
 
   version :content do

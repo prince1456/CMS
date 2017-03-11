@@ -149,10 +149,10 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 .copyright{
-  border-top: solid gray 1px;
+  border-top: solid #e52a6f 5px;
   height: 60px;
   background-color: #2B2B2B;
-  color: black;
+  color: white;
   padding-top: 20px;
   text-align: center;
 }
@@ -268,3 +268,15 @@ p {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
 }​
+h2 a{
+  color: #5f0f4e !important;
+}
+h2 a.title-post-index{
+  color: #5f0f4e;
+  font-family: 'Lato',sans-serif;
+}
+p.about-bio{
+  padding-right: 10px;
+  text-align: justify;
+  font-family: 'Lato',sans-serif;
+}

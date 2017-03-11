@@ -12,7 +12,7 @@
                 <div class="img-post img-responsive">
                     <%= image_tag(post.image) %>
                 </div>
-                <h2><%= link_to truncate(post.title, length: 40, seprator: " " ), post_path(post)%></h2>
+                <h2 ><%= link_to truncate(post.title, length: 40, seprator: " " ), post_path(post),class: "title-post-index"%></h2>
                 <h5>
                     <i class="fa fa-user" aria-hidden="true"></i>
                     author published at
@@ -25,7 +25,7 @@
                 </h5>
                 <div class="content-post">
                     <p>
-                        <%= truncate(post.content, length: 105, seprator: " ")%>
+                        <%= raw truncate(post.content, length: 105, seprator: " ")%>
                     </p>
                     <p><%= link_to "Continue Reading ...", post_path(post)%>
                         <i class="fa fa-tags" aria-hidden="true"></i>
@@ -44,8 +44,15 @@
                 About
             </div>
             <div class="row">
-                <img src="http://1.bp.blogspot.com/-2jn1lf9PfmI/VofwVhP4AmI/AAAAAAAADKY/DoZGnNEBGXM/w750-h400-c/winter-wonderland-1082511_640.jpg" height=200px; width=250px alt="">
-                <p>this is about me
+              <center>
+              <%= image_tag('bio-pic.jpg', size: "169x300")%>
+            </center>
+                <h4>Full Stack Web Developer </h4><p class="about-bio"> and thirsty to learn more programming.I love solving problems in elegant ways. Experienced working with Ruby on Rails, Javascript, HTML5, CSS, Node.js, AJAX, and jQuery
+                  Please feel free to contact me at
+                  <a href="mailto:akbar.alizadeh5@gmail.com?Subject=Hello from Website"target="_top">Send Mail</a>
+                  <br><a href="http://ali-alizada.com">http://ali-alizada.com</a>
+                  <br>
+                  <a href="https://www.linkedin.com/in/alializada/">linkedin</a>
                 </p>
             </div>
             <div class="row header-sidebar">
@@ -55,13 +62,9 @@
 
                 <div class="sidebar-recent">
                     <% @posts2.each do |post| %>
-                    <div class="row side-bar-space">
-                        <div class="col-md-4">
+                    <div class="side-bar-space">
                             <%= image_tag(post.image_url(:thumb).to_s) if post.image? %>
-                        </div>
-                        <div class="col-md-8">
-                            <%= truncate(post.title, length:40, seprator: " ") %>
-                        </div>
+                            <span><%= truncate(post.title, length:40, seprator: " ") %></span>
                     </div>
                     <% end %>
                 </div>
@@ -72,9 +75,9 @@
         <%= paginate @posts %>
     </div>
 
-    <div class="row footer">
+    <!-- <div class="row footer">
         <div class="col-md-4">
-            <h3>about</h3>
+            <h3>C</h3>
         </div>
         <div class="col-md-4">
             <h3>Newsletters</h3>
@@ -82,5 +85,5 @@
         <div class="col-md-4">
             <h3>Follow Us</h3>
         </div>
-    </div>
+    </div> -->
     <div class="row copyright">© Blogs Admin . Powered by Ruby on Rails . By Ali Alizada .</div>

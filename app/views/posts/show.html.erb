@@ -23,7 +23,7 @@
                     </div>
                 </p>
                 <p>
-                    <%= @post.content %>
+                    <%=  raw @post.content %>
                 </p>
                   <i class="fa fa-tags" aria-hidden="true"></i>
                 <% if Setting.tag_visibility %>
@@ -54,7 +54,7 @@
                     <% end %>
                 </section>​
               <br>
-                  <h3>Send Comment</h3>
+                  <h3>Make Me Happy :)</h3>
                 <br>
 
                 <%= form_for @visitor_comment, url: comments_url do |f| %>
@@ -76,7 +76,7 @@
                 </div>
                 <%= c.hidden_field :post_id, value: @post.id %>
                 <% end %>
-                <p><%= f.submit class:"btn btn-default" %></p>
+                <p><%= f.submit "Post Comment",class:"btn btn-default" %></p>
                 <% end %>
             </div>
         </div>
@@ -85,8 +85,15 @@
                 About
             </div>
             <div class="row">
-                <img src="http://1.bp.blogspot.com/-2jn1lf9PfmI/VofwVhP4AmI/AAAAAAAADKY/DoZGnNEBGXM/w750-h400-c/winter-wonderland-1082511_640.jpg" height=200px; width=250px alt="">
-                <p>this is about me
+              <center>
+              <%= image_tag('bio-pic.jpg', size: "169x300")%>
+            </center>
+                <h4>Full Stack Web Developer </h4><p class="about-bio"> and thirsty to learn more programming.I love solving problems in elegant ways. Experienced working with Ruby on Rails, Javascript, HTML5, CSS, Node.js, AJAX, and jQuery
+                  Please feel free to contact me at
+                  <a href="mailto:akbar.alizadeh5@gmail.com?Subject=Hello from Website"target="_top">Send Mail</a>
+                  <br><a href="http://ali-alizada.com">http://ali-alizada.com</a>
+                  <br>
+                  <a href="https://www.linkedin.com/in/alializada/">linkedin</a>
                 </p>
             </div>
             <div class="row header-sidebar">
@@ -96,25 +103,20 @@
 
                 <div class="sidebar-recent">
                     <% @posts2.each do |post| %>
-                    <div class="row side-bar-space">
-                        <div>
-                            <div class="col-md-2">
-                                <%= image_tag(post.image_url(:thumb).to_s) if post.image? %>
-                            </div>
-                            <div class="col-md-7">
-                                <%= truncate(post.title, length:40, seprator: " ") %>
-                            </div>
-                        </div>
-                        <hr>
+                    <div class="side-bar-space">
+                            <%= image_tag(post.image_url(:thumb).to_s) if post.image? %>
+                            <span><%= truncate(post.title, length:40, seprator: " ") %></span>
                     </div>
                     <% end %>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row footer">
+
+
+    <!-- <div class="row footer">
         <div class="col-md-4">
-            <h3>about</h3>
+            <h3>C</h3>
         </div>
         <div class="col-md-4">
             <h3>Newsletters</h3>
@@ -122,5 +124,5 @@
         <div class="col-md-4">
             <h3>Follow Us</h3>
         </div>
-    </div>
+    </div> -->
     <div class="row copyright">© Blogs Admin . Powered by Ruby on Rails . By Ali Alizada .</div>
