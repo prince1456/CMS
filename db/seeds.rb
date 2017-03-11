@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # array = [1,2,3]
-# moderator = Moderator.create(
-#   fullname: "hamed",
-#   username: "hamed@gmail.com",
-#   password: "Princeh" )
+moderator = Moderator.create(
+  fullname: "Ali Alizada",
+  username: "akbar.alizadeh5@gmail.com",
+  password: "Akbarjanqand123" )
 # 100.times do |x|
 # post = Post.create(
 #   title: Faker::Lorem.sentence(23),
