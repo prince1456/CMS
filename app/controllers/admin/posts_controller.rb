@@ -1,5 +1,5 @@
 class Admin::PostsController < Admin::ApplicationController
-  before_action :find_params, only:[:show, :update, :edit]
+  before_action :find_params, only:[:show, :update, :edit, :destroy]
     def index
         add_breadcrumb "All posts", admin_posts_path
         if params[:search].present?
@@ -39,7 +39,6 @@ class Admin::PostsController < Admin::ApplicationController
     end
 
     def destroy
-      post = Post.find(params[:id])
       post.destroy
       redirect_to admin_posts_path
     end
