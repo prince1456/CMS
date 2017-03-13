@@ -25,7 +25,7 @@
                 </h5>
                 <div class="content-post">
                     <p>
-                        <%= raw truncate(post.content, length: 105, seprator: " ")%>
+                        <%= strip_tags( post.content.first(105)) %>
                     </p>
                     <p><%= link_to "Continue Reading ...", post_path(post)%>
                         <i class="fa fa-tags" aria-hidden="true"></i>

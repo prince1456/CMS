@@ -25,7 +25,7 @@
             <% @posts.each do |f| %>
             <tr>
                 <td class="col-md-2"><%= truncate(f.title, length:40, sperate:'') %></td>
-                <td class="col-md-5 col-sm-5 col-xs-5"><%= raw truncate(f.content, length: 80, seprator: "")  %></td>
+                <td class="col-md-5 col-sm-5 col-xs-5"> <p><%= strip_tags( f.content.first(50)) %></p></td>
                 <td><%= f.moderator.fullname %></td>
                 <td><%= status_convertor(f.publish) %></td>
                 <td><%= f.comments.count %></td>
