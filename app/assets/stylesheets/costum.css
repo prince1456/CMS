@@ -74,6 +74,10 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(0, 0, 0, 0.49);
     min-height: 200px;
     font-family: 'Pacifico', cursive;
+    font-size: 25px;
+}
+.cover-shadow h1{
+  font-size: 50px;
 }
   /*background-color: #DE1B1B;
   height: 160px;*/
@@ -87,6 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-weight: bold;
   color: #fff;
+
 }
 
 .content-post{
@@ -162,12 +167,6 @@ h1, h2, h3, h4, h5, h6 {
 .container-show-post{
   padding-left: 100px;
 }
-
-
-
-
-
-
 
 
 
@@ -280,5 +279,6 @@ p.about-bio{
   text-align: justify;
   font-family: 'Lato',sans-serif;
 }
-#sidebar{
-}
+/*a{
+  color: #5f0f4e !important;
+}*/
